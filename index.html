@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Pixi v3 Shockwave Filter</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+      <script type="text/javascript" src="https://cdn.rawgit.com/GoodBoyDigital/pixi.js/v3.0.11/bin/pixi.js"></script>
+
+  <style id="compiled-css" type="text/css">
+
+  </style>
+
+</head>
+<body>
+
+
+
+
+  <script type="text/javascript">
+
+
+(function() {
+
+  canvas = document.createElement('canvas');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  document.body.appendChild(canvas);
+
+  renderer = new PIXI.autoDetectRenderer(canvas.width, canvas.height, {
+
+    view: canvas,
+    transparent: false,
+    backgroundColor: 0x223344
+
+  });
+
+  stage = new PIXI.Container();
+
+	Shockwave_Filter = new PIXI.filters.ShockwaveFilter();
+	Shockwave_Filter.center.x = 0.2;
+  Shockwave_Filter.center.y = 0.25;
+
+  BG_Container = new PIXI.Container();
+  BG_Container.pivot.set(window.innerWidth / 2, window.innerHeight / 2);
+  BG_Container.position.set(window.innerWidth / 2, window.innerHeight / 2);
+
+  BG_Sprite = new PIXI.Sprite.fromImage('i.jpg');
+  BG_Sprite.anchor.set(0.5);
+  BG_Sprite.scale.set(0.15);
+  BG_Sprite.position.set(window.innerWidth / 2, window.innerHeight / 2);
+
+  BG_Sprite.filters = [Shockwave_Filter];
+
+  BG_Container.addChild(BG_Sprite);
+
+  stage.addChild(BG_Container);
+
+
+
+  function Run() {
+
+    currentDate = new Date();
+    currentTime = currentDate.getTime();
+
+    requestAnimationFrame(Run);
+    renderer.render(stage);
+
+    Shockwave_Filter.time = (Shockwave_Filter.time >= 1 ) ? 0 : Shockwave_Filter.time + 0.01;
+
+  }
+
+  Run();
+
+}).call(this);
+
+
+
+</script>
+
+  <script>
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "ktbc2pox"
+      }], "*")
+    }
+
+    window.name = "result"
+  </script>
+</body>
+</html>
